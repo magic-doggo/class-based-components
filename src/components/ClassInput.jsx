@@ -1,5 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
+import Count from './Count';
 
 class ClassInput extends Component {
   constructor(props) {
@@ -64,6 +65,7 @@ class ClassInput extends Component {
             </li>
           ))}
         </ul>
+        <Count count={this.state.todos.length}></Count>
       </section>
     );
   }
