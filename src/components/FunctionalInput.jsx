@@ -39,7 +39,12 @@ const FunctionalInput = ({ name }) => {
       {/* The list of all the To-Do's, displayed */}
       <ul>
         {todos.map((todo) => (
-          <li key={todo}>{todo}</li>
+          <li key={todo}>
+            <div>{todo}</div>
+            <button onClick={() => {
+              setTodos(todos.filter(task => task !== todo))
+            }}>Delete</button>
+          </li>
         ))}
       </ul>
     </section>
