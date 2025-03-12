@@ -3,12 +3,9 @@ import Count from './Count';
 
 // eslint-disable-next-line react/function-component-definition, react/prop-types
 const FunctionalInput = ({ name }) => {
-  /*
-    We declare two state variables and their setters,
-    one to store the To-Do's
-    and the other to store the value of the input field
-  */
-  const [todos, setTodos] = useState(['Just some demo tasks', 'As an example']);
+
+  const [todos, setTodos] = useState([{task: 'Just some demo tasks', isCurrentlyEditing: false},
+    {task: 'As an example', isCurrentlyEditing: false}]);
   const [inputVal, setInputVal] = useState('');
 
   const handleInputChange = (e) => {
@@ -17,14 +14,14 @@ const FunctionalInput = ({ name }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTodos((todo) => [...todo, inputVal]);
+    // setTodos((todo) => [...todo, inputVal]);
+    setTodos((todo) => [...todo, {task: inputVal, isCurrentlyEditing: false}]);
     setInputVal('');
   };
 
   return (
     <section>
       <h3>{name}</h3>
-      {/* The input field to enter To-Do's */}
       <form onSubmit={handleSubmit}>
         {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label htmlFor="task-entry">Enter a task: </label>
@@ -37,14 +34,14 @@ const FunctionalInput = ({ name }) => {
         <button type="submit">Submit</button>
       </form>
       <h4>All the tasks!</h4>
-      {/* The list of all the To-Do's, displayed */}
       <ul>
         {todos.map((todo) => (
-          <li key={todo}>
-            <div>{todo}</div>
+          <li key={todo.task}>
+            <div>{todo.task} aaaa</div>
             <button onClick={() => {
-              setTodos(todos.filter(task => task !== todo))
+              setTodos(todos.filter(entry => entry.task !== todo.task))
             }}>Delete</button>
+            {/* <button onClick={() => {}}>Edit</button> */}
           </li>
         ))}
       </ul>
