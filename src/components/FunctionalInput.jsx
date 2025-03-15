@@ -4,8 +4,8 @@ import Count from './Count';
 // eslint-disable-next-line react/function-component-definition, react/prop-types
 const FunctionalInput = ({ name }) => {
 
-  const [todos, setTodos] = useState([{task: 'Just some demo tasks', isCurrentlyEditing: false},
-    {task: 'As an example', isCurrentlyEditing: false}]);
+  const [todos, setTodos] = useState([{ task: 'Just some demo tasks', isCurrentlyEditing: false },
+  { task: 'As an example', isCurrentlyEditing: false }]);
   const [inputVal, setInputVal] = useState('');
 
   const handleInputChange = (e) => {
@@ -15,7 +15,7 @@ const FunctionalInput = ({ name }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // setTodos((todo) => [...todo, inputVal]);
-    setTodos((todo) => [...todo, {task: inputVal, isCurrentlyEditing: false}]);
+    setTodos((todo) => [...todo, { task: inputVal, isCurrentlyEditing: false }]);
     setInputVal('');
   };
 
@@ -37,11 +37,38 @@ const FunctionalInput = ({ name }) => {
       <ul>
         {todos.map((todo) => (
           <li key={todo.task}>
-            <div>{todo.task} aaaa</div>
+            {todo.isCurrentlyEditing ? (<input type='text' />) : (<div>{todo.task} aaaa</div>)}
+            {/* <div>{todo.task} aaaa</div> */}
+
+            {todo.isCurrentlyEditing ? (
+              <button onClick={() => {
+                setTodos(todos.map(entry => {
+                  if (entry.task == todo.task) {
+                    return { task: entry.task, isCurrentlyEditing: false }
+                  } else return entry
+                }))
+              }}>Submit</button>) : (
+                <button onClick={() => {
+                  setTodos(todos.map(entry => {
+                    if (entry.task == todo.task) {
+                      return { task: entry.task, isCurrentlyEditing: true }
+                    } else return entry
+                  }))
+                }}>Edit</button>    
+            )}
+
+            {/* <button onClick={() => {
+              setTodos(todos.map(entry => {
+                if (entry.task == todo.task) {
+                  console.log("asdddddddd");
+                  return { task: entry.task, isCurrentlyEditing: true }
+                } else return entry
+              }))
+            }}>Edit</button> */}
+
             <button onClick={() => {
               setTodos(todos.filter(entry => entry.task !== todo.task))
             }}>Delete</button>
-            {/* <button onClick={() => {}}>Edit</button> */}
           </li>
         ))}
       </ul>
