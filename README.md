@@ -1,12 +1,10 @@
-# React + Vite
+Solved the class based component exercises listed here:
+https://codesandbox.io/p/sandbox/github/TheOdinProject/react-examples/tree/main/class-component-example?embed=1
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+"The goal of this assignment is to do the following:
 
-Currently, two official plugins are available:
+Implement a delete button for each task. The delete button should remove that specific task from the state array, thus deleting the task itself! Styling isn't a priority at this moment, but the button tag should be styled by default.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Implement a new class component, Count that displays the count of the number of todos, at any given time.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Implement an edit button for each task. It should replace the todo with an input field, and change the button itself to 'Resubmit', so the edits can be saved. This is a comparatively harder task, kudos for when you finish it!"
